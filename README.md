@@ -11,7 +11,7 @@
 
 ### How to run a sample
 
-1. Change directory to one of the sample folders, e.g. `storage-transfer`:
+1. Change directory to one of the sample folders, e.g. `node-devices`:
 
         cd node-devices/
 
