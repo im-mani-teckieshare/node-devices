@@ -23,3 +23,6 @@
 
         npm start
 
+1. For Same Rquest Format
+
+        refer https://github.com/im-mani-teckieshare/node-devices/blob/main/postman_collection.json
