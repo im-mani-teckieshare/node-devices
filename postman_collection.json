@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "83b6cbfd-096c-4858-83c5-05698666a906",
+		"name": "TEST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ADD DEVICE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "CREATE /devices\r\ncontent-type:    application/json\r\n\r\n{\"type\":\"REPEATER\",\"name\":\"A1\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/ajiranet/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ajiranet",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "LIST DEVICES",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "CREATE /devices\r\ncontent-type:    application/json\r\n\r\n{\"type\":\"COMPUTER\",\"name\":\"A4\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CONNECTING DEVICE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "CREATE /connections\r\ncontent-type:    application/json\r\n\r\n{\"value\":\"2\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/ajiranet/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ajiranet",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MODIFY DEVICE",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "MODIFY /devices/A1/strength\r\ncontent-type:    application/json\r\n\r\n{\"value\":2}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/ajiranet/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ajiranet",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "INFO ROUTES",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "FETCH /info-routes?from=A1&&"
+				},
+				"url": {
+					"raw": "http://localhost:8080/ajiranet/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"ajiranet",
+						"process"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
