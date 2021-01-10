@@ -18,6 +18,11 @@ const strengthSchema = Joi.object(
 function deviceRoute(app) {
 
   app.create('/devices', (req, res) => {
+    const { type, name } = req.body;
+    if (!(type && name)) {
+      res.status(400).send({ msg: "Invalid command syntax" });
+      return;
+    }
     const validation = deviceSchema.validate(req.body);
     if (validation.error) {
       res.status(400).send({ msg: validation.error.details[0].message });
