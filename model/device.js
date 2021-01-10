@@ -12,7 +12,7 @@ app.findAll = () => {
 }
 
 app.isExists = (device) => {
-  return indexMap[device.name] && true;
+  return (indexMap[device.name] !== undefined) && true;
 }
 
 app.find = (deviceName) => {

@@ -1,22 +1,48 @@
-let arr = [];
-const indexMap = {};
+const deviceDB = require('./device');
+let connMap = {};
 const app = {};
 
-app.add = (device) => {
-  indexMap[device.name] = arr.length;
-  arr.push(device);
+app.add = (source, target) => {
+  if (connMap[source]) {
+    connMap[source].push(...target);
+  } else {
+    connMap[source] = [...target];
+  }
 };
 
-app.findAll = () => {
-  return [...arr];
-}
+app.validate = (source, target) => {
+  const err = { err: false, msg: '' }
 
-app.isExists = (device) => {
-  return indexMap[device.name] && true;
-}
+  if (!deviceDB.isExists({ name: source })) {
+    err.err = true;
+    err.msg = `Node '${source}' not found`
+    return err;
+  }
 
-app.find = (deviceName) => {
-  return arr[indexMap[deviceName]];
+  if (target.findIndex(e => e === source) !== -1) {
+    err.err = true;
+    err.msg = "Cannot connect device to itself"
+    return err;
+  }
+
+  for (device of target) {
+    if (!deviceDB.isExists({ name: device })) {
+      err.err = true;
+      err.msg = `Node '${device}' not found`
+      return err;
+    }
+    if (connMap[source]) {
+      if (connMap[source].findIndex(e => e === device) !== -1) {
+        err.err = true;
+        err.msg = "Devices are already connected"
+        return err;
+      }
+    }
+  }
+  return err;
+}
+app.find = () => {
+  return connMap;
 }
 
 
